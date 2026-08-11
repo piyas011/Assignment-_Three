@@ -1,5 +1,5 @@
 const students = [
-  { name: "Rafi", score: 90 },
+  { name: "Rafi", score: Infinity },
   { name: "Sadia", score: 65 },
   { name: "Karim", score: 85 },
   { name: "Nafis", score: 75 },
@@ -14,7 +14,7 @@ const generateLeaderboard = (students) => {
     return "Invalid";
   }
 
-  if (students.length == 0) {
+  if (students.length === 0) {
     return "Invalid";
   }
 
@@ -26,7 +26,7 @@ const generateLeaderboard = (students) => {
       "name" in student &&
       "score" in student &&
       typeof student.name === "string" &&
-      typeof student.score === "number"
+      Number.isFinite(student.score)
     );
   });
   if (!validStudents) {
