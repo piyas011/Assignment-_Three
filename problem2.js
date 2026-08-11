@@ -21,7 +21,11 @@ const filterActiveUsers = (users) => {
   const checkProperty = users.every((user) => {
     // console.log(user);
     return (
-      "name" in user && "isActive" in user && typeof user.isActive === "boolean"
+      user !== null &&
+      typeof user === "object" &&
+      "isActive" in user &&
+      "name" in user &&
+      typeof user.isActive === "boolean"
     );
   });
 
@@ -38,9 +42,4 @@ const filterActiveUsers = (users) => {
   return activeUser;
 };
 
-console.log(
-  filterActiveUsers([
-    { name: "Rafi", isActive: true },
-    { name: "Sadia", isActive: true },
-  ]),
-);
+console.log(filterActiveUsers([]));
