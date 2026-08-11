@@ -13,6 +13,13 @@ const countHashtags = (caption) => {
 
   // convert String to array formate;
   let words = caption.split(" ");
+
+  const invalidHashtag = words.some((word) => {
+    return word.startsWith("#") && word.length === 1;
+  });
+  if (invalidHashtag) {
+    return "Invalid";
+  }
   // hashtag count
   words.forEach((word) => {
     if (word.startsWith("#") && word.length > 1) {
@@ -38,4 +45,4 @@ const countHashtags = (caption) => {
   return { hashtagCount: countHashtags, longestTag: longestTag };
 };
 
-console.log(countHashtags(captions));
+console.log(countHashtags("#"));
